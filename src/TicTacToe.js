@@ -1,17 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./TicTacToe.css"
 
 const TicTacToe = () => {
+    const [turn, setTurn]= useState('x');
+    const [cells, setCells]= useState(Array(9).fill(''));
     
     const HandleClick = ( num) => {
-           alert(num)
+        if(cells[num] !== '') {
+            alert('already clicked!')
+            return;
+        } 
+        let squares = [...cells]
+            if (turn === 'x') {
+                squares[num] = 'x';
+                setTurn('o')
+            } else {
+                squares[num] = 'o'
+                setTurn('x')
+            }
+            setCells(squares)
+            console.log(squares)
     }
     const Cell = ({num}) => {
-        return <td onClick={() => HandleClick(num)}>-</td>
+        return <td onClick={() => HandleClick(num)}>{cells[num]}</td>
     }
   return (
-    <div className='container'>
+    <div className='container'> 
         <table>
+            Turn: {turn}
             <tbody>
                 <tr>
                     <Cell num={0} />
