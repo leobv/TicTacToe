@@ -1,7 +1,7 @@
 import React from 'react'
 import "./TicTacToe.css"
 
-const ticTacToe = () => {
+const TicTacToe = () => {
     
     const HandleClick = ( num) => {
            alert(num)
@@ -34,4 +34,4 @@ const ticTacToe = () => {
   )
 }
 
-export default ticTacToe
+export default TicTacToe
